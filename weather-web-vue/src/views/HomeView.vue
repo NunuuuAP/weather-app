@@ -5,8 +5,6 @@ import WeeklyWeather from '../components/WeeklyWeather.vue'
 
 <template>
   <main>
-    
     <CurrentWeather />
-    <WeeklyWeather />
   </main>
 </template>

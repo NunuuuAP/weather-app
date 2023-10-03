@@ -64,6 +64,7 @@ watch(location, async () => {
 	justify-content: center;
 	background-color: var(--color-background-soft);
 	color: var(--color-text);
+	height: 100%;
 	border-radius: 25px;
 	margin: 10px 20px;
 	padding: 30px;

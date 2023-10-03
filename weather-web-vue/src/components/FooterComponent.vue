@@ -1,8 +1,7 @@
 <template>
     <div class="container">
-        <div>Horas</div>
-        <div>Semanal</div>
-        <div>Tema</div>
+        <div>¡Descubre todas las ventajas!</div>
+        <button>Hazte Premium</button>
     </div>
 </template>
 
@@ -18,5 +17,16 @@
     border-radius: 25px;
     margin: 10px 20px;
     padding: 30px;
+    gap: 20px;
+}
+
+.container button {
+    border-style: none;
+    border-radius: 25px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: var(--color-accent);
+    color: var(--color-background-soft);
+    cursor: pointer;
 }
 </style>

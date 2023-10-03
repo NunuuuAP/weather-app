@@ -8,33 +8,36 @@ import { user } from './user';
 
 <template>
   <!--<LoginComponent />-->
-  <!--<section v-if="user.isLoggedIn()">-->
-    <header>
-        <HeaderComponent />
-      <!--
-        <nav>
+  <!--v-if="user.isLoggedIn()">-->
+  <section>
+	<header>
+		<HeaderComponent />
+	  <!--
+		<nav>
 
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
-      -->
-    </header>
-    <RouterView />
-    <footer>
-      <FooterComponent />
-    </footer>
-  <!--</section>-->
+		  <RouterLink to="/">Home</RouterLink>
+		  <RouterLink to="/about">About</RouterLink>
+		</nav>
+	  -->
+	</header>
+	<RouterView style="flex: 1;"/>
+	<footer>
+	  <FooterComponent />
+	</footer>
+  </section>
 </template>
 
 <style scoped>
+section {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	gap: 20px;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
 }
 
 nav {
@@ -44,33 +47,19 @@ nav {
   margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
+footer {
+  	margin-top: auto;
 }
 
 @media (min-width: 1024px) {
 
   nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+	text-align: left;
+	margin-left: -1rem;
+	font-size: 1rem;
 
-    padding: 1rem 0;
-    margin-top: 1rem;
+	padding: 1rem 0;
+	margin-top: 1rem;
   }
 }
 </style>

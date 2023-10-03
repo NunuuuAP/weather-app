@@ -57,7 +57,7 @@ function setSearchLocation(e: Event) {
 }
 
 .container input:focus {
-	outline: rgb(79, 194, 194) solid 2px;
+	outline: var(--color-accent) solid 2px;
 }
 
 .container button {
@@ -67,7 +67,7 @@ function setSearchLocation(e: Event) {
 }
 
 .container button:hover {
-	background-color: rgb(79, 194, 194);
+	background-color: var(--color-accent);
 }
 
 .container .item {
@@ -82,7 +82,7 @@ function setSearchLocation(e: Event) {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: rgb(79, 194, 194);
+	background-color: var(--color-accent);
 	color: var(--color-background-soft);
 }
 

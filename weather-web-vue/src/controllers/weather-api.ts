@@ -37,4 +37,4 @@ export async function fetchWeather(location: string): Promise<boolean | IWeather
     };
 }
 
-export const location = ref<string>("");
+export const location = ref<string>("Madrid");
