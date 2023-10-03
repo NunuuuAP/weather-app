@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+  import CurrentWeather from '../components/CurrentWeather.vue'
+  import WeeklyWeather from '../components/WeeklyWeather.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <CurrentWeather />
+    <WeeklyWeather />
   </main>
 </template>
