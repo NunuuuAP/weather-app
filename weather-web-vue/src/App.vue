@@ -1,20 +1,29 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import LoginComponent from '@/components/LoginComponent.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
+import FooterComponent from './components/FooterComponent.vue';
+import { user } from './user';
 </script>
 
 <template>
-  <header>
-      <HeaderComponent />
-    <!--
-      <nav>
-        
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    -->
-  </header>
-  <RouterView />
+  <!--<LoginComponent />-->
+  <!--<section v-if="user.isLoggedIn()">-->
+    <header>
+        <HeaderComponent />
+      <!--
+        <nav>
+
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
+      -->
+    </header>
+    <RouterView />
+    <footer>
+      <FooterComponent />
+    </footer>
+  <!--</section>-->
 </template>
 
 <style scoped>

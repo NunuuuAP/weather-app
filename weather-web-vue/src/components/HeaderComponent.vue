@@ -36,7 +36,6 @@ function setSearchLocation(e: Event) {
 	gap: 10px;
 }
 
-
 .container h1 {
 	display: none;
 }

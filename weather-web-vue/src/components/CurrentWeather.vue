@@ -52,8 +52,6 @@ watch(location, async () => {
 				</div>
 			</div>
 		</div>
-    	<!--<i :class="weather.weatherIcon"></i>
-    	<div class="temp"></div>-->
 	</div>	
 </template>
 
