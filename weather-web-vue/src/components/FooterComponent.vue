@@ -15,7 +15,6 @@
     background-color: var(--color-background-soft);
     color: var(--color-text);
     border-radius: 25px;
-    margin: 10px 20px;
     padding: 30px;
     gap: 20px;
 }
@@ -28,5 +27,6 @@
     background-color: var(--color-accent);
     color: var(--color-background-soft);
     cursor: pointer;
+    box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.5);
 }
 </style>
