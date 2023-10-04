@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CurrentWeather from '../components/CurrentWeather.vue';
+import CurrentWeather from '../components/CurrentWeather.vue'
 </script>
 
 <template>

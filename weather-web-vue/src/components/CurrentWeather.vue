@@ -33,9 +33,11 @@ watch(location, async () => {
 	<p v-if="!loading && error != ''">{{ error }}</p>
 
 	<div class="container" v-if="weather && error == ''">
-		<i class="bi bi-sun"></i>
-		<h1>{{ weather.temp }}ºC</h1>
-		<h2>{{ weather.city }}, {{ weather.country }}</h2>
+		<main>
+			<i class="bi bi-sun"></i>
+			<h1>{{ weather.temp }}ºC</h1>
+			<h2>{{ weather.city }}, {{ weather.country }}</h2>
+		</main>
 		<div class="other-info">
 			<div class="item">
 				<i class="bi-water"></i>
@@ -61,16 +63,15 @@ watch(location, async () => {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	background-color: var(--color-background-soft);
 	color: var(--color-text);
 	height: 100%;
 	border-radius: 25px;
-	margin: 10px 20px;
 	padding: 30px;
 }
 .container i {
-	font-size: 5rem;
+	font-size: 7rem;
 }
 
 .container h1 {
@@ -79,12 +80,19 @@ watch(location, async () => {
 	margin: 0;
 }
 
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
 .other-info {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
 	justify-content: space-around;
-	margin-top: 15px;
 	
 }
 
@@ -118,9 +126,8 @@ watch(location, async () => {
 
 @media (min-width: 1024px) {
 	.container {
-	display: flex;
-	width: 100vw;
-	background-color: blue;
+
+		background-color: blue;
 	}
 }
 
