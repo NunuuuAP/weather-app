@@ -101,7 +101,9 @@ h1 {
 }
 
 @media (min-width: 1024px) {
-
+	main {
+		align-items: center;
+	}
 	.container h1 {
 		display:inline;
 	}

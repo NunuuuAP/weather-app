@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import ContainerComponent from './ContainerComponent.vue';
+</script>
+
 <template>
     <div class="container">
         <div>¡Descubre todas las ventajas!</div>

@@ -4,6 +4,7 @@ import { ref, watch } from 'vue';
 
 import type { IWeatherInfo } from '@/controllers/weather-api';
 import { fetchWeather, location } from '@/controllers/weather-api';
+import ContainerComponent from '@/components/ContainerComponent.vue';
 
 const loading: Ref<boolean> = ref<boolean>(true);
 const error: Ref<string> = ref<string>("");
@@ -29,47 +30,43 @@ watch(location, async () => {
 </script>
 
 <template>
-	<p v-if="loading">Cargando</p>
-	<p v-if="!loading && error != ''">{{ error }}</p>
+	<ContainerComponent v-if="!weather">
+		<div v-if="loading">
+			<p>Cargando...</p>
+		</div>
+		<div v-if="!loading && error != ''">
+			<i class="bi-exclamation-diamond"></i>
+			<p>Error: {{ error }}</p>
+		</div>
+	</ContainerComponent>
 
-	<div class="container" v-if="weather && error == ''">
+	<ContainerComponent v-if="weather && error == ''">
 		<main>
 			<i class="bi bi-sun"></i>
-			<h1>{{ weather.temp }}ºC</h1>
+			<h1>{{ weather.current.temp }}ºC</h1>
 			<h2>{{ weather.city }}, {{ weather.country }}</h2>
 		</main>
 		<div class="other-info">
 			<div class="item">
 				<i class="bi-water"></i>
 				<div class="content">
-					<h3>{{ weather.humidity }}%</h3>
+					<h3>{{ weather.current.humidity }}%</h3>
 					<p>Humedad</p>
 				</div>
 			</div>
 			<div class="item">
 				<i class="bi-wind"></i>
 				<div class="content">
-					<h3>{{ weather.wind }} km/h</h3>
+					<h3>{{ weather.current.wind }} km/h</h3>
 					<p>Velocidad</p>
 				</div>
 			</div>
 		</div>
-	</div>	
+	</ContainerComponent>
 </template>
 
 <style scoped>
 
-.container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
-	background-color: var(--color-background-soft);
-	color: var(--color-text);
-	height: 100%;
-	border-radius: 25px;
-	padding: 30px;
-}
 .container i {
 	font-size: 7rem;
 }

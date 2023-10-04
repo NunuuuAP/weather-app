@@ -16,7 +16,7 @@ import { user } from './user';
 		<HeaderComponent />
 	</header>
 	<NavBar v-if="opened == 'menu'"/>
-	<section v-if="opened == null">
+	<section v-else>
 		<RouterView style="flex: 1;"/>
 		<footer>
 		  <FooterComponent />
@@ -29,20 +29,15 @@ import { user } from './user';
 main {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
-}
-
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+	height: 100%;
 }
 
 section {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	padding: 0 20px 20px 20px;
 	gap: 20px;
+	height: calc(100vh - 100px);
 }
 
 footer {
@@ -51,13 +46,5 @@ footer {
 
 @media (min-width: 1024px) {
 
-  nav {
-	text-align: left;
-	margin-left: -1rem;
-	font-size: 1rem;
-
-	padding: 1rem 0;
-	margin-top: 1rem;
-  }
 }
 </style>

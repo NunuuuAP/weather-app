@@ -18,10 +18,6 @@ import { toggle } from '../controllers/menu-controller';
 				<i class="bi-calendar2"></i>
 				<p>Semanal</p>
 			</RouterLink>
-			<RouterLink to="/theme" v-on:click="toggle(null)">
-				<i class="bi-palette"></i>
-				<p>Tema</p>
-			</RouterLink>
 		</nav>
 	</main>
 </template>
@@ -38,8 +34,7 @@ nav {
 	background-color: var(--color-background-mute);
 	border-radius: 25px;
 	height: 100%;
-
-	padding: 30px 20px 0 0;
+	padding: 30px 20px 30px 0px;
 }
 
 a {
