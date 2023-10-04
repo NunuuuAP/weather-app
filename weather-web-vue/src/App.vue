@@ -1,38 +1,35 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import LoginComponent from '@/components/LoginComponent.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
+import NavBar from './components/NavBar.vue';
+import { opened } from './controllers/menu-controller';
 import { user } from './user';
 </script>
 
 <template>
   <!--<LoginComponent />-->
   <!--v-if="user.isLoggedIn()">-->
-  <section>
+  <main>
 	<header>
 		<HeaderComponent />
-	  <!--
-		<nav>
-
-		  <RouterLink to="/">Home</RouterLink>
-		  <RouterLink to="/about">About</RouterLink>
-		</nav>
-	  -->
 	</header>
-	<RouterView style="flex: 1;"/>
-	<footer>
-	  <FooterComponent />
-	</footer>
-  </section>
+	<NavBar v-if="opened == 'menu'"/>
+	<section v-if="opened == null">
+		<RouterView style="flex: 1;"/>
+		<footer>
+		  <FooterComponent />
+		</footer>
+	</section>
+  </main>
 </template>
 
 <style scoped>
-section {
+main {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
-	gap: 20px;
 }
 
 header {
@@ -40,11 +37,12 @@ header {
   max-height: 100vh;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+section {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	padding: 0 20px 20px 20px;
+	gap: 20px;
 }
 
 footer {

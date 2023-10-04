@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { location } from '../controllers/weather-api';
-
+import { toggle, opened } from '../controllers/menu-controller';
 import type { Ref } from 'vue';
 import { ref } from 'vue';
 
@@ -8,20 +8,22 @@ const searchLocation: Ref<string> = ref<string>("");
 
 function setSearchLocation(e: Event) {
 	location.value = searchLocation.value;
-}
+};
 </script>
 
 <template>
 	<div class="container">
-		<div class="item menu"><i class="bi-list"></i></div>
+		<button class="item menu" v-on:click="toggle('menu')"><i class="bi-list"></i></button>
 
-		<h1>WEATHER NAPP</h1>
-
-		<form @submit.prevent="setSearchLocation">
-			<input v-model="searchLocation" id="location" class="item" type="text" name="search"
-				placeholder="Ciudad" spellcheck="false" />
-			<button class="item"><i class="bi-search"></i></button>
-		</form>
+		<main v-if="opened == null">
+			<h1>WEATHER NAPP</h1>
+	
+			<form @submit.prevent="setSearchLocation">
+				<input v-model="searchLocation" id="location" class="item" type="text" name="search"
+					placeholder="Ciudad" spellcheck="false" />
+				<button class="item"><i class="bi-search"></i></button>
+			</form>
+		</main>
 	</div>
 </template>
 
@@ -64,6 +66,7 @@ function setSearchLocation(e: Event) {
 	background-color: transparent;
 	border-style: none;
 	color: var(--color-background-soft);
+	cursor: pointer;
 }
 
 .container button:hover {
@@ -84,6 +87,12 @@ function setSearchLocation(e: Event) {
 	justify-content: center;
 	background-color: var(--color-accent);
 	color: var(--color-background-soft);
+}
+
+main {
+	display: flex;
+	flex: 1;
+	gap: 10px;
 }
 
 h1 {
