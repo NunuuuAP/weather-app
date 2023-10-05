@@ -1,32 +1,19 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-import { ref, watch } from 'vue';
+import { watch } from 'vue';
 
-import type { IWeatherInfo } from '@/controllers/weather-api';
-import { fetchWeather, location } from '@/controllers/weather-api';
+import { location, refreshLocation, weather, error, loading } from '@/controllers/weather-api';
 import ContainerComponent from '@/components/ContainerComponent.vue';
-
-const loading: Ref<boolean> = ref<boolean>(true);
-const error: Ref<string> = ref<string>("");
-const weather: Ref<IWeatherInfo | null> = ref<IWeatherInfo | null>(null);
-
-const refreshLocation = async () => {
-	const data: boolean | IWeatherInfo = await fetchWeather(location.value);
-	
-	if (data == false) {
-		loading.value = false;
-		error.value = "Ciudad no existente.";
-	} else {
-		loading.value = false;
-		weather.value = data as IWeatherInfo;
-	}
-}
+import router from '../router/index';
 
 refreshLocation();
 watch(location, async () => {
 	refreshLocation();
 });
 
+const redirectToHourly = (e: Event) => {
+	e.preventDefault();
+	router.push('/hourly');
+}
 </script>
 
 <template>
@@ -40,7 +27,7 @@ watch(location, async () => {
 		</div>
 	</ContainerComponent>
 
-	<ContainerComponent v-if="weather && error == ''">
+	<ContainerComponent v-if="weather && error == ''" v-on:click="redirectToHourly">
 		<main>
 			<i class="bi bi-sun"></i>
 			<h1>{{ weather.current.temp }}ºC</h1>
@@ -123,8 +110,7 @@ main {
 
 @media (min-width: 1024px) {
 	.container {
-
-		background-color: blue;
+		
 	}
 }
 

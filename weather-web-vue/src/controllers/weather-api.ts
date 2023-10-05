@@ -1,6 +1,8 @@
+import type { Ref } from 'vue';
 import { ref } from 'vue';
 
 const API_URL = "https://weatherapi-com.p.rapidapi.com/forecast.json"
+export let searchs: number = -1;
 
 export interface IWeatherInfo {
     date: string;
@@ -77,4 +79,52 @@ export async function fetchWeather(location: string): Promise<boolean | IWeather
     };
 }
 
+
+export async function getLocation(): Promise<boolean | string> {
+    const geolocation_url = 'https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/';
+
+    const response: Response = await fetch(geolocation_url, {
+        headers: {
+          'X-RapidAPI-Key': '45aec994b2msh6619988aca90959p1021dbjsn8ee852e8e57e',
+          'X-RapidAPI-Host': 'ip-geolocation-ipwhois-io.p.rapidapi.com'
+        }
+    });
+
+    if (!response.ok) {
+        return false;
+    }
+
+    const data = await response.json();
+    return data["city"];
+}
+
 export const location = ref<string>("Madrid");
+
+async function updateLocation() {
+    const result = await getLocation();
+
+    if (typeof result === 'string') {
+        location.value = result;
+    } else {
+        console.error('Error obteniendo la ubicación.');
+    }
+}
+
+export const loading: Ref<boolean> = ref<boolean>(true);
+export const error: Ref<string> = ref<string>("");
+export const weather: Ref<IWeatherInfo | null> = ref<IWeatherInfo | null>(null);
+
+export const refreshLocation = async () => {
+	const data: boolean | IWeatherInfo = await fetchWeather(location.value);
+	searchs += 1;
+	
+	if (data == false) {
+		loading.value = false;
+		error.value = "Ciudad no existente.";
+	} else {
+		loading.value = false;
+		weather.value = data as IWeatherInfo;
+	}
+}
+
+updateLocation();

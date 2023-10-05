@@ -1,27 +1,8 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-import { ref, watch } from 'vue';
-import type { IWeatherInfo } from '@/controllers/weather-api';
-import { fetchWeather, location } from '@/controllers/weather-api';
+import { watch } from 'vue';
+
+import { location, refreshLocation, weather} from '@/controllers/weather-api';
 import ContainerComponent from '@/components/ContainerComponent.vue';
-
-const loading: Ref<boolean> = ref<boolean>(true);
-const error: Ref<string> = ref<string>("");
-const weather: Ref<IWeatherInfo | null> = ref<IWeatherInfo | null>(null);
-
-
-
-const refreshLocation = async () => {
-	const data: boolean | IWeatherInfo = await fetchWeather(location.value);
-	
-	if (data == false) {
-		loading.value = false;
-		error.value = "Ciudad no existente.";
-	} else {
-		loading.value = false;
-		weather.value = data as IWeatherInfo;
-	}
-}
 
 refreshLocation();
 watch(location, async () => {
@@ -58,6 +39,7 @@ watch(location, async () => {
   text-align: center;
   height: 100%;
   gap: 10px;
+  overflow-x: auto;
 }
 .items {
   display: flex;
