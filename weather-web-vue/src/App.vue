@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import LoginComponent from '@/components/LoginComponent.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
 import NavBar from './components/NavBar.vue';
+import ModalComponent from './components/ModalComponent.vue';
 import { opened } from './controllers/menu-controller';
-import { user } from './user';
+import { searchs } from '@/controllers/weather-api';
 </script>
 
 <template>
-  <!--<LoginComponent />-->
-  <!--v-if="user.isLoggedIn()">-->
   <main>
 	<header>
 		<HeaderComponent />
 	</header>
+	<ModalComponent v-if="searchs >= 5" :searchs="searchs">
+		Has superdado el límite de búsquedas gratuitas
+	</ModalComponent>
 	<NavBar v-if="opened == 'menu'"/>
 	<section v-else>
 		<RouterView style="flex: 1;"/>
