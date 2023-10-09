@@ -9,7 +9,7 @@ import ContainerComponent from './ContainerComponent.vue';
 		<slot></slot>
 		<router-link to="/subscription">
 			<!-- Close the modal on click to view subscription page -->
-			<button v-on:click="$emit('close')">QUIERO SER PREMIUM</button>
+			<button v-on:click="$emit('close')">GO PREMIUM!</button>
     	</router-link>
 	  </div>
 	</ContainerComponent>

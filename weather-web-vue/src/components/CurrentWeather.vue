@@ -4,6 +4,7 @@ import { watch } from 'vue';
 import { location, refreshLocation, weather, error, loading } from '@/controllers/weather-api';
 import ContainerComponent from '@/components/ContainerComponent.vue';
 import router from '../router/index';
+import IconComponent from '@/components/IconComponent.vue';
 
 refreshLocation();
 watch(location, async () => {
@@ -19,7 +20,7 @@ const redirectToHourly = (e: Event) => {
 <template>
 	<ContainerComponent v-if="!weather">
 		<div v-if="loading">
-			<p>Cargando...</p>
+			<p>Loading...</p>
 		</div>
 		<div v-if="!loading && error != ''">
 			<i class="bi-exclamation-diamond"></i>
@@ -29,23 +30,25 @@ const redirectToHourly = (e: Event) => {
 
 	<ContainerComponent v-if="weather && error == ''" v-on:click="redirectToHourly">
 		<main>
-			<i class="bi bi-sun"></i>
-			<h1>{{ weather.current.temp }}ºC</h1>
-			<h2>{{ weather.city }}, {{ weather.country }}</h2>
+			<IconComponent v-if="weather.current" :currentItem="weather.current"></IconComponent>
+			<div>
+				<h1>{{ weather.current.temp }}ºC</h1>
+				<h2>{{ weather.city }}, {{ weather.country }}</h2>
+			</div>
 		</main>
 		<div class="other-info">
 			<div class="item">
 				<i class="bi-water"></i>
 				<div class="content">
 					<h3>{{ weather.current.humidity }}%</h3>
-					<p>Humedad</p>
+					<p>Humidity</p>
 				</div>
 			</div>
 			<div class="item">
 				<i class="bi-wind"></i>
 				<div class="content">
 					<h3>{{ weather.current.wind }} km/h</h3>
-					<p>Velocidad</p>
+					<p>Wind</p>
 				</div>
 			</div>
 		</div>
@@ -54,8 +57,9 @@ const redirectToHourly = (e: Event) => {
 
 <style scoped>
 
-.container i {
-	font-size: 7rem;
+.container {
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
 .container h1 {
@@ -77,7 +81,6 @@ main {
 	flex-direction: row;
 	width: 100%;
 	justify-content: space-around;
-	
 }
 
 .other-info h3 {
@@ -110,7 +113,23 @@ main {
 
 @media (min-width: 1024px) {
 	.container {
-		
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+
+	.other-info {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+    	align-items: flex-end;
+		text-align-last: end;
+	}
+}
+
+@media (min-width: 1024px) and (max-height: 700px){
+	main {
+		flex-direction: row;
+		justify-content: space-around;
 	}
 }
 

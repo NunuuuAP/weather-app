@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <div>¡Descubre todas las ventajas!</div>
-        <button>Hazte Premium</button>
+        <div>Discover all the advantages</div>
+        <button>Go Premium!</button>
     </div>
 </template>
 

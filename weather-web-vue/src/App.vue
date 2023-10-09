@@ -30,7 +30,7 @@ watch(searchs, async () => {
 		<HeaderComponent />
 	</header>
 	<ModalComponent v-if="open == true" v-on:close="open = false">
-		Has superdado el límite de búsquedas gratuitas
+		You have exceeded the limit of free searches
 	</ModalComponent>
 	<NavBar v-if="opened == 'menu'"/>
 	<section>
