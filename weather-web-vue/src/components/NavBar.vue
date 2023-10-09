@@ -25,7 +25,12 @@ import { toggle } from '../controllers/menu-controller';
 <style scoped>
 
 main {
+	position: absolute;
+	top: 95px;
+	width: 100%;
 	padding: 0 20px 20px 20px;
+	z-index: 1;
+  	backdrop-filter: blur(4px);
 }
 
 nav {
@@ -35,6 +40,9 @@ nav {
 	border-radius: 25px;
 	height: 100%;
 	padding: 30px 20px 30px 0px;
+	width: 100%;
+	height: fit-content;
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
 }
 
 a {
@@ -47,14 +55,23 @@ a {
 
 a:hover {
 	background-color: var(--color-accent);
-	color: var(--color-background-soft);
+	color: var(--color-accent-text);
 }
   
 @media (min-width: 1024px) {
-	.container {
+	main {
+		position: absolute;
+		top: 95px;
+		width: 100%;
+		padding: 0 20px 20px 20px;
+		z-index: 1;
+  		backdrop-filter: blur(4px);
+	}
+	nav {
 		display: flex;
 		width: 20vw;
-		background-color: blue;
+		height: fit-content;
+		box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
 	}
 }
   </style>
