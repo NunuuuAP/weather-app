@@ -1,10 +1,5 @@
-<script lang="ts">
+<script setup lang="ts">
 import ContainerComponent from './ContainerComponent.vue';
-
-export default {
-	name: "ModalComponent",
-	components: { ContainerComponent }
-};
 </script>
 
 <template>
@@ -12,7 +7,10 @@ export default {
 	<ContainerComponent>
 	  <div class="modal-content">
 		<slot></slot>
-		<button @click="$emit('close')">QUIERO SER PREMIUM</button>
+		<router-link to="/subscription">
+			<!-- Close the modal on click to view subscription page -->
+			<button v-on:click="$emit('close')">QUIERO SER PREMIUM</button>
+    	</router-link>
 	  </div>
 	</ContainerComponent>
   </div>
@@ -35,13 +33,17 @@ export default {
 
 .container {
   	flex: none;
-  	width: fit-content;
+  	width: 90%;
+	height: fit-content;
+
 }
 .modal-content {
   	display: flex;
   	flex-direction: column;
   	justify-content: center;
   	align-items: center;
+	text-align: center;
+	font-size: 1.1rem;
   	gap: 20px;
 }
 
@@ -62,8 +64,10 @@ export default {
 }
 
 @media (min-width: 1024px){
-  .modal-content {
-}
+	.container {
+  		flex: none;
+  		width: fit-content;
+	}
 
 }
 </style>
