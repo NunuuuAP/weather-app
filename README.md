@@ -23,3 +23,17 @@ I have provided the application with a startup script, you only need to execute 
 
 When you're done viewing the app, just press Ctrl + C to exit the preview.
 
+### Used APIs:
+
+IP Geolocation - IPWHOIS.io
+WeatherAPI.com - Realtime Weather and Forecast Weather API
+
+### Used libraries:
+
+Bootstrap Icons
+public-ip
+
+## UX/UI Design
+
+This is a modern and minimalist user interface designed to provide essential information to the user at a glance. The concept is to streamline information so that users can find what they need in less than 10 seconds. This is achieved primarily through the use of symbols and colors that are mentally associated with specific information.
+
