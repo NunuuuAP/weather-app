@@ -7,16 +7,16 @@ import { toggle } from '../controllers/menu-controller';
 	<main>
 		<nav>
 			<RouterLink to="/" v-on:click="toggle(null)">
-				<i class="bi-house"></i>
-				<p>Inicio</p>
+				<i class="bi-house-fill"></i>
+				<p>Home</p>
 			</RouterLink>
 			<RouterLink to="/hourly" v-on:click="toggle(null)">
-				<i class="bi-clock"></i>
-				<p>Por horas</p>
+				<i class="bi-clock-fill"></i>
+				<p>Hourly prediction</p>
 			</RouterLink>
 			<RouterLink to="/weekly" v-on:click="toggle(null)">
-				<i class="bi-calendar2"></i>
-				<p>Semanal</p>
+				<i class="bi-calendar2-fill"></i>
+				<p>Weekly prediction</p>
 			</RouterLink>
 		</nav>
 	</main>
