@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { publicIpv4 } from 'public-ip';
 
 const WEATHER_API_URL = "https://weatherapi-com.p.rapidapi.com/forecast.json";
-const GEOLOCATION_URL = 'https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/';
+const GEOLOCATION_URL = "https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/";
 
 export interface IWeatherInfo {
     date: string;
@@ -57,18 +57,35 @@ export async function fetchWeather(location: string): Promise<boolean | IWeather
         };
     });
 
-    const daily = data["forecast"]["forecastday"].map((day: any) => {
-        const date = new Date(day.date);
-        const weekPosition = date.getDay();
-        const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-
-        return {
-            date: days[weekPosition],
-            maxTemp: day.day.maxtemp_c,
-            minTemp: day.day.mintemp_c,
-            weather: day.day.condition.text
-        };
-    });
+    const daily = [];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const today = new Date();
+    const currentDayIndex = today.getDay(); // Índice del día actual (0 para Domingo, 1 para Lunes, etc.)
+    
+    for (let i = 0; i < 7; i++) {
+        const index = (currentDayIndex + i) % 7;
+        const dayData = data["forecast"]["forecastday"][i]; // Asegúrate de que tengas datos suficientes en tu conjunto de datos
+        const date = days[index];
+    
+        if (dayData) {
+            daily.push({
+                date: date,
+                maxTemp: dayData.day.maxtemp_c,
+                minTemp: dayData.day.mintemp_c,
+                weather: dayData.day.condition.text
+            });
+        } else {
+            /* It only shows 3 results because the free api used, it takes up the rest 
+            of the days without defining it so that the finish of the component can 
+            be seen better */
+            daily.push({
+                date: date,
+                maxTemp: 'N/A',
+                minTemp: 'N/A',
+                weather: 'N/A'
+            });
+        }
+    }
 
     return {
         date: data["location"]["localtime"],
@@ -107,7 +124,7 @@ async function updateLocation() {
     if (typeof result === 'string') {
         location.value = result;
     } else {
-        console.error('Error obteniendo la ubicación.');
+        console.error("Error obteniendo la ubicación.");
     }
 }
 
