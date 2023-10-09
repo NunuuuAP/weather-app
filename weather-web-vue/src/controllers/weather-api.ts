@@ -1,8 +1,9 @@
 import type { Ref } from 'vue';
 import { ref } from 'vue';
+import { publicIpv4 } from 'public-ip';
 
-const API_URL = "https://weatherapi-com.p.rapidapi.com/forecast.json"
-export let searchs: number = -1;
+const WEATHER_API_URL = "https://weatherapi-com.p.rapidapi.com/forecast.json";
+const GEOLOCATION_URL = 'https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/';
 
 export interface IWeatherInfo {
     date: string;
@@ -28,7 +29,7 @@ export interface IWeatherInfo {
 }
 
 export async function fetchWeather(location: string): Promise<boolean | IWeatherInfo> {
-    const response: Response = await fetch(API_URL + "?q=" + location + "&days=7", {
+    const response: Response = await fetch(WEATHER_API_URL + "?q=" + location + "&days=7", {
         headers: {
             'X-RapidAPI-Key': '45aec994b2msh6619988aca90959p1021dbjsn8ee852e8e57e',
             'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
@@ -81,9 +82,9 @@ export async function fetchWeather(location: string): Promise<boolean | IWeather
 
 
 export async function getLocation(): Promise<boolean | string> {
-    const geolocation_url = 'https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/';
+    const public_ip = await publicIpv4();
 
-    const response: Response = await fetch(geolocation_url, {
+    const response: Response = await fetch(GEOLOCATION_URL + '?ip=' + public_ip, {
         headers: {
           'X-RapidAPI-Key': '45aec994b2msh6619988aca90959p1021dbjsn8ee852e8e57e',
           'X-RapidAPI-Host': 'ip-geolocation-ipwhois-io.p.rapidapi.com'
@@ -113,10 +114,10 @@ async function updateLocation() {
 export const loading: Ref<boolean> = ref<boolean>(true);
 export const error: Ref<string> = ref<string>("");
 export const weather: Ref<IWeatherInfo | null> = ref<IWeatherInfo | null>(null);
+export const searchs = ref<number>(0);
 
 export const refreshLocation = async () => {
 	const data: boolean | IWeatherInfo = await fetchWeather(location.value);
-	searchs += 1;
 	
 	if (data == false) {
 		loading.value = false;
@@ -128,3 +129,7 @@ export const refreshLocation = async () => {
 }
 
 updateLocation();
+
+export const resetSearchs = () => {
+    searchs.value = 0;
+};
