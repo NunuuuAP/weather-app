@@ -14,5 +14,12 @@ Web application that displays weather data returned by an API for a selected loc
 3. There is a packaging script for the deployment of the application
 
 ## How to run ##
-[...]
+I have provided the application with a startup script, you only need to execute the script "initScript.sh" to see the application running.
+
+
+´´´ bash
+./initScript.sh
+´´´
+
+When you're done viewing the app, just press Ctrl + C to exit the preview.
 
