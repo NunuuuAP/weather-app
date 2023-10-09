@@ -5,6 +5,7 @@ import { location, refreshLocation, weather} from '@/controllers/weather-api';
 import ContainerComponent from '@/components/ContainerComponent.vue';
 import IconComponent from '@/components/IconComponent.vue';
 
+/* Update location and weather data at init and stays watching for changes */
 refreshLocation();
 watch(location, async () => {
 	refreshLocation();

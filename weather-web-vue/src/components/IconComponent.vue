@@ -1,4 +1,6 @@
 <script setup lang="ts">
+
+/* Optional variables to show weather icons in every case */
 defineProps<{
     currentItem?: {
         humidity: number;

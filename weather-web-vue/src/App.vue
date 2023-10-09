@@ -10,6 +10,7 @@ import { ref, watch } from 'vue';
 
 const open = ref<boolean>(false);
 
+/* Checks the number of searches, if it is greater than 5 it shows the modal */
 const showModal = () => {
 	if (searchs.value === 5) {
 		open.value = true;
@@ -18,6 +19,7 @@ const showModal = () => {
 	}
 };
 
+/* Checks the number of searches every time it changes */
 watch(searchs, async () => {
 	showModal();
 });

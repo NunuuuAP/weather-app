@@ -6,6 +6,8 @@ import { ref } from 'vue';
 
 const searchLocation: Ref<string> = ref<string>("");
 
+/* Function to set the location to search when click on button or enter input 
+it also counts the searches performed */
 function setSearchLocation(e: Event) {
 	location.value = searchLocation.value;
 	searchs.value += 1;

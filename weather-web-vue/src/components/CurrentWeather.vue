@@ -6,11 +6,13 @@ import ContainerComponent from '@/components/ContainerComponent.vue';
 import router from '../router/index';
 import IconComponent from '@/components/IconComponent.vue';
 
+/* Update location and weather data at init and stays watching for changes */
 refreshLocation();
 watch(location, async () => {
 	refreshLocation();
 });
 
+/* Function to redirect to hourly prediction view  */
 const redirectToHourly = (e: Event) => {
 	e.preventDefault();
 	router.push('/hourly');
@@ -60,6 +62,7 @@ const redirectToHourly = (e: Event) => {
 .container {
 	flex-direction: column;
 	justify-content: space-evenly;
+	cursor: pointer;
 }
 
 .container h1 {

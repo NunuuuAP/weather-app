@@ -81,7 +81,7 @@
 		--color-text: var(--vt-c-text-dark-2);
 		
 		--color-accent: var(--vt-c-accent-dark);
-		--color-accent-text: var(--vt-c-indigo);
+		--color-accent-text: var(--vt-c-black);
 
 		--color-input-background: var(--vt-c-text-light-2);
 		--color-input-text: var(--vt-c-text-dark-2);

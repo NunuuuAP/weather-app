@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <div>Discover all the advantages</div>
-        <button>Go Premium!</button>
+        <router-link to="/subscription">
+			<button>Go Premium!</button>
+    	</router-link>
     </div>
 </template>
 

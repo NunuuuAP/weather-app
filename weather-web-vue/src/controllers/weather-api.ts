@@ -2,9 +2,13 @@ import type { Ref } from 'vue';
 import { ref } from 'vue';
 import { publicIpv4 } from 'public-ip';
 
+/* Weather API */
 const WEATHER_API_URL = "https://weatherapi-com.p.rapidapi.com/forecast.json";
+
+/* IP Geolocation - IPWHOIS.io */
 const GEOLOCATION_URL = "https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/";
 
+/* Interface to save information about the weather and use it in the component */
 export interface IWeatherInfo {
     date: string;
     country: string;
@@ -28,6 +32,7 @@ export interface IWeatherInfo {
     }[];
 }
 
+/* Function to fetch the weather data from the API */
 export async function fetchWeather(location: string): Promise<boolean | IWeatherInfo> {
     const response: Response = await fetch(WEATHER_API_URL + "?q=" + location + "&days=7", {
         headers: {
@@ -60,11 +65,11 @@ export async function fetchWeather(location: string): Promise<boolean | IWeather
     const daily = [];
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const today = new Date();
-    const currentDayIndex = today.getDay(); // Índice del día actual (0 para Domingo, 1 para Lunes, etc.)
+    const currentDayIndex = today.getDay();
     
     for (let i = 0; i < 7; i++) {
         const index = (currentDayIndex + i) % 7;
-        const dayData = data["forecast"]["forecastday"][i]; // Asegúrate de que tengas datos suficientes en tu conjunto de datos
+        const dayData = data["forecast"]["forecastday"][i];
         const date = days[index];
     
         if (dayData) {
@@ -97,7 +102,7 @@ export async function fetchWeather(location: string): Promise<boolean | IWeather
     };
 }
 
-
+/* Function to get the location of the user by its public IP */
 export async function getLocation(): Promise<boolean | string> {
     const public_ip = await publicIpv4();
 
@@ -116,8 +121,10 @@ export async function getLocation(): Promise<boolean | string> {
     return data["city"];
 }
 
+/* Vue reactive variables, initialized to avoid init errors */
 export const location = ref<string>("Madrid");
 
+/* Function to update the geolocation of the user */
 async function updateLocation() {
     const result = await getLocation();
 
@@ -133,6 +140,7 @@ export const error: Ref<string> = ref<string>("");
 export const weather: Ref<IWeatherInfo | null> = ref<IWeatherInfo | null>(null);
 export const searchs = ref<number>(0);
 
+/* Function to refresh the location */
 export const refreshLocation = async () => {
 	const data: boolean | IWeatherInfo = await fetchWeather(location.value);
 	
@@ -145,8 +153,5 @@ export const refreshLocation = async () => {
 	}
 }
 
+/* Call the function to stay up to date with the user's location */
 updateLocation();
-
-export const resetSearchs = () => {
-    searchs.value = 0;
-};
