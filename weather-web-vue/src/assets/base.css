@@ -1,60 +1,98 @@
-/* color palette from <https://github.com/vuejs/theme> */
+/* color palette */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: rgba(248, 248, 248, 0.30);
-  --vt-c-white-mute: rgba(242, 242, 242, 0.70);
+  	--vt-c-white: #ffffff;
+  	--vt-c-white-soft: rgba(248, 248, 248, 0.45);
+  	--vt-c-white-mute: rgba(242, 242, 242, 0.8);
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  	--vt-c-black: #181818;
+  	--vt-c-black-soft: #222222;
+  	--vt-c-black-mute: #282828;
 
-  --vt-c-indigo: #2c3e50;
+  	--vt-c-indigo: #2c3e50;
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  	--vt-c-text-light-1: var(--vt-c-indigo);
+  	--vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+  	--vt-c-text-dark-1: var(--vt-c-white);
+  	--vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+	  
+  	--vt-c-accent-dark: hsl(180, 49%, 54%);
+  	--vt-c-accent-light: hsl(180, 49%, 34%);
 
-  --vt-c-accent-dark: hsl(180, 49%, 54%);
-  --vt-c-accent-light: hsl(180, 49%, 34%);
+	/* iOS, iPadOS system colors https://developer.apple.com/design/human-interface-guidelines/color */
+	--vt-c-yelow-light: rgb(255, 204, 0);
+	--vt-c-yelow-dark:	rgb(255, 214, 10);
+
+	--vt-c-grey-light: rgb(142, 142, 147);
+  	--vt-c-grey-dark: rgb(142, 142, 147);
+
+	--vt-c-blue-muted-light: rgb(48, 176, 199);
+  	--vt-c-blue-muted-dark: rgb(64, 200, 224);
+
+	--vt-c-blue-soft-light: rgb(50, 173, 230);
+  	--vt-c-blue-soft-dark: rgb(100, 210, 255);
+
+  	--vt-c-white-dark: hsl(0, 0%, 100%);
+	--vt-c-white-light: hsl(0, 0%, 100%);
+
+	--vt-c-blue-light: rgb(0, 122, 255);
+	--vt-c-blue-dark: rgb(10, 132, 255);
+
+	--vt-c-red-light: rgb(255, 59, 48);
+	--vt-c-red-dark: rgb(255, 69, 58);
 }
 
 /* semantic color variables for this project */
 :root {
-  --color-background: linear-gradient(0.4turn, hsl(185, 49%, 60%), var(--vt-c-accent-light));
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  	--color-background: linear-gradient(0.4turn, hsl(185, 49%, 60%), var(--vt-c-accent-light));
+  	--color-background-soft: var(--vt-c-white-soft);
+  	--color-background-mute: var(--vt-c-white-mute);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  	--color-heading: var(--vt-c-text-light-2);
+  	--color-text: var(--vt-c-text-light-1);
 
-  --color-accent: var(--vt-c-accent-light);
-  --color-accent-text: var(--vt-c-white);
+  	--color-accent: var(--vt-c-accent-light);
+  	--color-accent-text: var(--vt-c-white);
 
-  --color-input-background: var(--vt-c-text-dark-2);
-  --color-input-text: var(--vt-c-text-light-2);
+  	--color-input-background: var(--vt-c-text-dark-2);
+  	--color-input-text: var(--vt-c-text-light-2);
 
-  --section-gap: 160px;
+  	--color-yellow: var(--vt-c-yelow-light);
+  	--color-grey: var(--vt-c-grey-light);
+  	--color-blue-muted: var(--vt-c-blue-muted-light);
+  	--color-blue-soft: var(--vt-c-blue-soft-light);
+	--color-white: var(--vt-c-white-light);
+  	--color-blue: var(--vt-c-blue-light);
+  	--color-red: var(--vt-c-red-light);
+
+  	--section-gap: 160px;
 }
 
 /* The default theme of the device defines the theme of the website */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: linear-gradient(0.4turn, var(--vt-c-black), var(--vt-c-black-soft));
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+	:root {
+		--color-background: linear-gradient(0.4turn, var(--vt-c-black), var(--vt-c-black-soft));
+		--color-background-soft: var(--vt-c-black-soft);
+		--color-background-mute: var(--vt-c-black-mute);
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+		--color-border: var(--vt-c-divider-dark-2);
+		--color-border-hover: var(--vt-c-divider-dark-1);
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-    
-    --color-accent: var(--vt-c-accent-dark);
-    --color-accent-text: var(--vt-c-indigo);
+		--color-heading: var(--vt-c-text-dark-1);
+		--color-text: var(--vt-c-text-dark-2);
+		
+		--color-accent: var(--vt-c-accent-dark);
+		--color-accent-text: var(--vt-c-indigo);
 
-    --color-input-background: var(--vt-c-text-light-2);
-    --color-input-text: var(--vt-c-text-dark-2);
+		--color-input-background: var(--vt-c-text-light-2);
+		--color-input-text: var(--vt-c-text-dark-2);
+
+		--color-yellow: var(--vt-c-yelow-dark);
+		--color-grey: var(--vt-c-grey-dark);
+		--color-blue-muted: var(--vt-c-blue-muted-dark);
+		--color-blue-soft: var(--vt-c-blue-soft-dark);
+	  	--color-white: var(--vt-c-white-dark);
+		--color-blue: var(--vt-c-blue-dark);
+		--color-red: var(--vt-c-red-dark);
   }
 }
 
@@ -71,22 +109,22 @@ body {
   color: var(--color-text);
   background: var(--color-background);
   transition:
-    color 0.5s,
-    background-color 0.5s;
+	color 0.5s,
+	background-color 0.5s;
   line-height: 1.6;
   font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
+	Inter,
+	-apple-system,
+	BlinkMacSystemFont,
+	'Segoe UI',
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	'Fira Sans',
+	'Droid Sans',
+	'Helvetica Neue',
+	sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { location } from '../controllers/weather-api';
+import { location, searchs } from '../controllers/weather-api';
 import { toggle, opened } from '../controllers/menu-controller';
 import type { Ref } from 'vue';
 import { ref } from 'vue';
@@ -8,6 +8,7 @@ const searchLocation: Ref<string> = ref<string>("");
 
 function setSearchLocation(e: Event) {
 	location.value = searchLocation.value;
+	searchs.value += 1;
 };
 </script>
 
@@ -45,7 +46,7 @@ function setSearchLocation(e: Event) {
 .container form {
 	display: flex;
 	gap: 10px;
-	width: 100%;
+	flex: 1;
 }
 
 .container input {
@@ -60,21 +61,24 @@ function setSearchLocation(e: Event) {
 
 .container input:focus {
 	outline: var(--color-accent) solid 2px;
+	color: var(--color-text);
+	background-color: var(--color-input-background);
 }
 
 .container button {
 	background-color: transparent;
 	border-style: none;
-	color: var(--color-background-soft);
+	color: var(--color-input-text);
 	cursor: pointer;
 }
 
 .container button:hover {
 	background-color: var(--color-accent);
+	color: var(--color-accent-text);
 }
 
 .container .item {
-	background-color: var(--color-heading);
+	background-color: var(--color-input-background);
 	border-radius: 25px;
 	height: 3rem;
 	aspect-ratio: 1/1;
@@ -86,7 +90,7 @@ function setSearchLocation(e: Event) {
 	align-items: center;
 	justify-content: center;
 	background-color: var(--color-accent);
-	color: var(--color-background-soft);
+	color: var(--color-accent-text);
 }
 
 main {
@@ -103,9 +107,21 @@ h1 {
 @media (min-width: 1024px) {
 	main {
 		align-items: center;
+		gap: 20px;
+	}
+
+	main h1 {
+		font-size: 2rem;
+		display: inline;
+	}
+
+	.container {
+		gap: 20px;
 	}
 	.container h1 {
-		display:inline;
+		display: inline;
+		font-weight: bold;
+		color: var(--color-accent);
 	}
 	.format {
 		flex: 2;

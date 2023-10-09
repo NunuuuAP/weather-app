@@ -6,17 +6,18 @@
 
 <style scoped>
 .container {
-	display: flex;
 	flex: 1;
-	flex-direction: column;
+	display: flex;
+	justify-content: center;
 	align-items: center;
-	justify-content: space-evenly;
 	background-color: var(--color-background-soft);
 	color: var(--color-text);
 	width: 100%;
+	height: inherit;
 	border-radius: 25px;
 	padding: 30px;
-    overflow: auto;
+    overflow: scroll;
+
 }
 
 </style>

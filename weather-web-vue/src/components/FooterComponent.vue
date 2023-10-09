@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import ContainerComponent from './ContainerComponent.vue';
-</script>
-
 <template>
     <div class="container">
         <div>¡Descubre todas las ventajas!</div>
@@ -16,11 +12,12 @@ import ContainerComponent from './ContainerComponent.vue';
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-background-soft);
+    background-color: var(--color-background-mute);
     color: var(--color-text);
     border-radius: 25px;
     padding: 30px;
     gap: 20px;
+    overflow: auto;
 }
 
 .container button {
@@ -29,7 +26,7 @@ import ContainerComponent from './ContainerComponent.vue';
     font-weight: bold;
     padding: 10px;
     background-color: var(--color-accent);
-    color: var(--color-background-soft);
+    color: var(--color-accent-text);
     cursor: pointer;
     box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.5);
 }
