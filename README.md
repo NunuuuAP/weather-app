@@ -53,15 +53,15 @@ When you're done viewing the app, just press Ctrl + C to exit the preview.
 ## APIs and Libraries
 ### Used APIs:
 
-IP Geolocation - IPWHOIS.io
+- IP Geolocation - IPWHOIS.io
 
-WeatherAPI.com - Realtime Weather and Forecast Weather API
+- WeatherAPI.com - Realtime Weather and Forecast Weather API
 
 ### Used libraries:
 
-Bootstrap Icons
+- Bootstrap Icons
 
-public-ip
+- public-ip
 
 ## Design
 ### UX/UI
