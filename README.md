@@ -12,11 +12,17 @@ This document provides a detailed description of the structure and components of
 4. [Design](#design)
 5. [Main Files](#main-files)
 6. [Other Files](#other-files)
+
     6.1. [Views](#views)
+
     6.2. [Router](#router)
+
     6.3. [Controllers](#controllers)
+
     6.4. [Assets](#assets)
+
     6.5. [Components](#components)
+    
 8. [Summary](#summary)
 
 
