@@ -41,12 +41,10 @@ This document provides a detailed description of the structure and components of
 3. There is a packaging script for the deployment of the application
 
 ## How to run ##
-I have provided the application with a startup script, you only need to execute the script "initScript.sh" to see the application running.
+I have provided the application with a startup script, you just need to run the "initScript.sh" script in the terminal to see the application running.
 
 
-``` bash
-./initScript.sh
-```
+**`./initScript.sh`**
 
 On the one hand, the provided `initScript.sh` is a shell script that automates the process of building and running a Docker container for the Weather NAPP Vue.js web application. It first navigates to the `weather-web-vue` directory, where the application source code is located. Then, it builds a Docker image named `weather-napp-vue`. After building the image, the script runs a Docker container based on this image, mapping port 8080 from the host to port 8080 inside the container. The `-d` flag indicates that the container should run in detached mode, allowing it to run in the background. Finally, the script opens the application in the default web browser at `http://localhost:8080`, enabling quick access to the deployed Vue.js application.
 
