@@ -44,11 +44,13 @@ This document provides a detailed description of the structure and components of
 I have provided the application with a startup script, you only need to execute the script "initScript.sh" to see the application running.
 
 
-´´´ bash
+``` bash
 ./initScript.sh
-´´´
+```
 
-When you're done viewing the app, just press Ctrl + C to exit the preview.
+On the one hand, the provided `initScript.sh` is a shell script that automates the process of building and running a Docker container for the Weather NAPP Vue.js web application. It first navigates to the `weather-web-vue` directory, where the application source code is located. Then, it builds a Docker image named `weather-napp-vue`. After building the image, the script runs a Docker container based on this image, mapping port 8080 from the host to port 8080 inside the container. The `-d` flag indicates that the container should run in detached mode, allowing it to run in the background. Finally, the script opens the application in the default web browser at `http://localhost:8080`, enabling quick access to the deployed Vue.js application.
+
+On the other hand, the provided Dockerfile is a configuration file used to create a Docker image for a Node.js-based web application. It starts by using the latest Node.js image available from Docker Hub as the base. It then installs a simple HTTP server called `http-server` globally within the container. The working directory is set to `/app`, and the project's `package.json` and `package-lock.json` files are copied to this directory. After installing project dependencies using npm, all project files and folders are copied into the container. The application is then built using the specified npm script. The Dockerfile exposes port 8080 and sets the default command to start the `http-server` within the `dist` directory, serving the application's static content. This Docker image is useful for deploying the Node.js web application within a containerized environment, allowing for easier deployment and scalability.
 
 ## APIs and Libraries
 ### Used APIs:
