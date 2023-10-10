@@ -22,7 +22,7 @@ This document provides a detailed description of the structure and components of
     6.4. [Assets](#assets)
 
     6.5. [Components](#components)
-    
+
 8. [Summary](#summary)
 
 
@@ -54,11 +54,13 @@ When you're done viewing the app, just press Ctrl + C to exit the preview.
 ### Used APIs:
 
 IP Geolocation - IPWHOIS.io
+
 WeatherAPI.com - Realtime Weather and Forecast Weather API
 
 ### Used libraries:
 
 Bootstrap Icons
+
 public-ip
 
 ## Design
