@@ -21,8 +21,7 @@ const router = createRouter({
       path: '/weekly',
       name: 'weekly',
       component: WeekView
-    }
-    ,
+    },
     {
       path: '/subscription',
       name: 'subscription',

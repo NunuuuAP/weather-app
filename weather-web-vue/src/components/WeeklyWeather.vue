@@ -1,41 +1,40 @@
 <script setup lang="ts">
-import { watch } from 'vue';
+import { watch } from 'vue'
 
-import { location, refreshLocation, weather} from '@/controllers/weather-api';
-import ContainerComponent from '@/components/ContainerComponent.vue';
-import IconComponent from '@/components/IconComponent.vue';
+import { location, refreshLocation, weather } from '@/controllers/weather-api'
+import ContainerComponent from '@/components/ContainerComponent.vue'
+import IconComponent from '@/components/IconComponent.vue'
 
 /* Update location and weather data at init and stays watching for changes */
-refreshLocation();
+refreshLocation()
 watch(location, async () => {
-	refreshLocation();
-});
+  refreshLocation()
+})
 </script>
 
 <template>
-	<ContainerComponent id="background">
-		<div class="content">
-			<div v-for="item in weather?.daily" v-bind:key="item.weather" class="items">
-				<div>
-					<p>{{ item.date.substring(0, 3) }}</p>
-				</div>
-				<div>
-					<IconComponent v-if="item" :weekItem="item"></IconComponent>
-				</div>
-				<div>
-					<p class="max">{{ item.maxTemp }}ºC</p>
-					<p> - </p>
-					<p class="min">{{ item.minTemp }}ºC</p>
-				</div>
-			</div>
-		</div>
-	</ContainerComponent>
+  <ContainerComponent id="background">
+    <div class="content">
+      <div v-for="item in weather?.daily" v-bind:key="item.weather" class="items">
+        <div>
+          <p>{{ item.date.substring(0, 3) }}</p>
+        </div>
+        <div>
+          <IconComponent v-if="item" :weekItem="item"></IconComponent>
+        </div>
+        <div>
+          <p class="max">{{ item.maxTemp }}ºC</p>
+          <p>-</p>
+          <p class="min">{{ item.minTemp }}ºC</p>
+        </div>
+      </div>
+    </div>
+  </ContainerComponent>
 </template>
 
 <style scoped>
-
 .container {
-	justify-content: unset;
+  justify-content: unset;
 }
 
 .content {
@@ -58,10 +57,9 @@ watch(location, async () => {
   flex: 1;
 }
 
-@media (min-width: 1024px) and (max-height: 700px){
-	.items {
-		flex-direction: row;
-
-	}
+@media (min-width: 1024px) and (max-height: 700px) {
+  .items {
+    flex-direction: row;
+  }
 }
 </style>
