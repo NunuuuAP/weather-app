@@ -1,4 +1,6 @@
 cd weather-web-vue
-docker build -t weather-napp-vue .
-docker run -p 8080:8080 -d weather-napp-vue
-open http://localhost:8080
+npm install
+npm install -g http-server
+npm run build
+nohup http-server dist -p 8081 &
+open http://127.0.0.1:8081
